@@ -5,7 +5,7 @@ html {
 
 #calculator {
     width: 250px;
-    height: 240px;
+    height: 230px;
     margin: 100px auto;
     padding: 20px;
     background: #223c5f;
@@ -16,9 +16,8 @@ html {
             inset 0 -2px 3px rgba(0,0,0,0.3),
             0 1px 1px rgba(255,255,255,0.9);
 }
-
-.display_area {
-    height: 30px;
+#displayArea {
+    height: 20px;
     width: 230px;
     background-color: white;
     display: block;
@@ -47,35 +46,32 @@ span{
     cursor: pointer;
     border-radius: 5px;
     text-align: center;
-    user-select: none;
     transition: all 0.2s ease;
 }
-
-.clear, .clear_all{
+.backSpace{
     background-color: #fd8c3e;
-    width: 71px;
+    width: 39px;
+    box-shadow: 0 3px #ff6800;
+    font-size: 12px;
+}
+.clear, .clearEntry{
+    background-color: #fd8c3e;
+    width: 70.5px;
     box-shadow: 0 3px #ff6800;
 }
-.numeric{
+.number, .plusMinus, .decimal{
     background-color: #019283;
     width: 39px;
     box-shadow: 0 3px #00645a;
 }
-.decimal, .equal{
+.operator{
     background-color: #e97077;
     width: 39px;
     box-shadow: 0 3px #c24047;
 }
-.plus{
+
+.equal{
     background-color: #e97077;
-    width: 39px;
-    height: 52px;
-    float: right;
-    box-shadow: 0 3px #c24047;
-}
-.divide,.times,.minus{
-    background-color: #e97077;
-    float: right;
-    width: 39px;
+    width: 102px;
     box-shadow: 0 3px #c24047;
 }

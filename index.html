@@ -3,31 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+    <script src="script.js"></script>
     <title>Title</title>
 </head>
 <body>
-    <div id="calculator">
-        <div class="display_area"></div>
-        <div class="keys">
+<div id="calculator">
+
+    <div id="displayAreaEquation"></div>
+
+    <div id="displayArea"></div>
+
+    <div id="keys">
+
+        <div>
+            <span class="clearEntry">CE</span>
             <span class="clear">C</span>
-            <span class="clear_all">CE</span>
-            <span class="divide">÷</span>
-            <span class="numeric">7</span>
-            <span class="numeric">8</span>
-            <span class="numeric">9</span>
-            <span class="times">x</span>
-            <span class="numeric">4</span>
-            <span class="numeric">5</span>
-            <span class="numeric">6</span>
-            <span class="minus">-</span>
-            <span class="numeric">1</span>
-            <span class="numeric">2</span>
-            <span class="numeric">3</span>
-            <span class="plus">+</span>
-            <span class="numeric">0</span>
-            <span class="decimal">.</span>
+            <span class="operator">÷</span>
+        </div>
+
+        <div>
+            <span class="number">7</span>
+            <span class="number">8</span>
+            <span class="number">9</span>
+            <span class="operator">x</span>
+        </div>
+
+        <div>
+            <span class="number">4</span>
+            <span class="number">5</span>
+            <span class="number">6</span>
+            <span class="operator">-</span>
+        </div>
+
+        <div>
+            <span class="number">1</span>
+            <span class="number">2</span>
+            <span class="number">3</span>
+            <span class="operator">+</span>
+        </div>
+
+        <div>
+            <span class="number">0</span>
+            <span id="decimal" class="number">.</span>
             <span class="equal">=</span>
         </div>
-        </div>
+
+    </div>
+
+</div>
 </body>
 </html>
