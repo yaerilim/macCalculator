@@ -2,55 +2,84 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
     <script src="script.js"></script>
-    <title>Title</title>
+    <link rel="stylesheet" href="style.css">
+    <title>Mac OS 9 Calculator</title>
 </head>
 <body>
-<div id="calculator">
-
-    <div id="displayAreaEquation"></div>
-
-    <div id="displayArea"></div>
-
-    <div id="keys">
-
-        <div>
-            <span class="clearEntry">CE</span>
-            <span class="clear">C</span>
-            <span class="operator">÷</span>
+    <audio class="sound" src="img/sound.wav"></audio>
+    <header>
+        <img class="header_img" src="img/header.jpg">
+        <img class="header_img2" src="img/header2.jpg">
+    </header>
+    <div class="calculator_container">
+        <div class="results"><p>0</p></div>
+        <div class="buttons">
+            <div class="row1 row">
+                <div class="c key operation">
+                    C
+                </div>
+                <div class="divide key operation">
+                    /
+                </div>
+                <div class="multiply key operation">
+                    *
+                </div>
+            </div>
+            <div class="row2 row">
+                <div class="7 key number">
+                    7
+                </div>
+                <div class="8 key number">
+                    8
+                </div>
+                <div class="9 key number">
+                    9
+                </div>
+                <div class="minus key operation">
+                    -
+                </div>
+            </div>
+            <div class="row3 row">
+                <div class="4 key number">
+                    4
+                </div>
+                <div class="5 key number">
+                    5
+                </div>
+                <div class="6 key number">
+                    6
+                </div>
+                <div class="plus key operation">
+                    +
+                </div>
+            </div>
+            <div class="row4 row">
+                <div class="1 key number">
+                    1
+                </div>
+                <div class="2 key number">
+                    2
+                </div>
+                <div class="3 key number">
+                    3
+                </div>
+                <div class="equal key operation">
+                    =
+                </div>
+            </div>
+            <div class="row5 row">
+                <div class="zero key number">
+                    <p>0</p>
+                </div>
+                <div class="point key number">
+                    <p>.</p>
+                </div>
+            </div>
         </div>
-
-        <div>
-            <span class="number">7</span>
-            <span class="number">8</span>
-            <span class="number">9</span>
-            <span class="operator">x</span>
-        </div>
-
-        <div>
-            <span class="number">4</span>
-            <span class="number">5</span>
-            <span class="number">6</span>
-            <span class="operator">-</span>
-        </div>
-
-        <div>
-            <span class="number">1</span>
-            <span class="number">2</span>
-            <span class="number">3</span>
-            <span class="operator">+</span>
-        </div>
-
-        <div>
-            <span class="number">0</span>
-            <span id="decimal" class="number">.</span>
-            <span class="equal">=</span>
-        </div>
-
     </div>
-
-</div>
+    <div class="icons"><img src="img/icons.png"></div>
 </body>
 </html>
