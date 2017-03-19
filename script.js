@@ -1,191 +1,106 @@
+//---------------------------------- CALCULATOR STARTS ----------------------------------
 $(document).ready(function() {
    $('.key').click(audio_on);
+   $('.key').click(key_display);
+   $('.equal').click(calculation);
+   $('.clear').click(clear);
 });
+//---------------------------------- KEY SOUND ----------------------------------
 function audio_on(){
     $('.sound').trigger('play');
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// $(document).ready(calculatorReady);
-// var input_index = 0;
-// var input = [''];
-// var num1 = input[0];
-// var operator = input[1];
-// var num2 = input[2];
-// var result = doMath(num1,num2,operator);
-//
-//
-//
-//
-// function calculatorReady(){
-//     console.log('calculator is ready');
-//     $(".number").click(numberClick);
-//     $(".operator").click(operatorClick);
-//     $(".equal").click(equalClick);
-//     $(".clear").click(clearClick);
-//     $(".clearEntry").click(clearEntryClick);
-// }
-//
-//
-//
-//
-// function numberClick(){
-//     console.log('number has been clicked');
-//     var value = $(this).text();
-//     if(value === "." && input[input_index].indexOf(".") !== -1){       //"multiple decimals"
-//         return;
-//     }
-//     input[input_index] +=value;
-//     return $('#displayArea').text(parseFloat(input[input_index]));
-// }
-//
-//
-//
-//
-//
-// function operatorClick(){
-//     console.log('operator has been clicked');
-//     if(input.length === 3){
-//         equalClick();
-//     }
-//     var value = $(this).text();
-//     ++input_index;
-//     input[input_index++] = value;
-//     input[input_index] = '';
-//     return $('#displayArea').text(value);
-// }
-//
-//
-//
-//
-//
-//
-//
-//
-// function equalClick(){
-//     console.log('equal sign has been clicked');
-//     if(input_index == 0){
-//         if(input[0] === '') {          //"missing operands"
-//             input_index = 0;
-//             return $("#displayArea").text(0);
-//         }
-//         else if(input_index == 0 && input[0] === result){               //"operation repeat"
-//             console.log('equal sign clicked more than once');
-//             num1 = result;
-//             num2 = result;
-//             doMath();
-//             return $("#displayArea").text(input[0]);
-//         }
-//         else{
-//             input_index = 0;
-//             return $("#displayArea").text(input[0]);         //"missing operation"
-//         }
-//     }
-//     for (var i = 0; i < input.length; i++) {                        //"division by zero"
-//         if (input[i] === "÷" && input[i + 1] === "0") {
-//             return $("#displayArea").text("Error");
-//         }
-//     }
-//     if(input[2]===''){               //"operation rollover" & "partial operand"
-//             input[2] = input[0];
-//         }
-//         input.splice(0,2);
-//         input[0] = result;
-//         input_index = 0;
-//         return $('#displayArea').text(input[input_index]);
-//     }
-//
-//
-//
-//
-//
-//
-//
-//
-//
-// function doMath(num1, num2, operator) {
-//     switch (operator) {
-//         case '+':
-//             return parseFloat(num1) + parseFloat(num2);
-//             break;
-//         case '-':
-//             return parseFloat(num1) - parseFloat(num2);
-//             break;
-//         case 'x':
-//             return parseFloat(num1) * parseFloat(num2);
-//             break;
-//         case '÷':
-//             return parseFloat(num1) / parseFloat(num2);
-//             break;
-//     }
-// }
-//
-//
-//
-//
-//
-//
-//
-//
-// function clearClick() {
-//     console.log('clear has been clicked');
-//     input = [''];
-//     input_index = 0;
-//     $("#displayArea").text(input.join(""));
-// }
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-// function clearEntryClick() {
-//     console.log('clear has been clicked');
-//     input = [''];
-//     input_index = 0;
-//     $("#displayArea").text(input.join(""));
-// }
+//---------------------------------- WHEN CLEAR BUTTON CLICKED ----------------------------------
+function clear() {
+    $('.display').val('0');
+    display_arr = [];
+    key_input_arr = [];
+}
+//---------------------------------- CREATING ARRAY FOR DISPLAY & AVOIDING MULTIPLE DECIMALS / OPERATION KEYS ----------------------------------
+var display_arr = [];
+var multiple_decimals = 0;
+var multiple_operations = 0;
+function key_display(){
+    var value = $(this).text();
+    if(value === '.'){
+        multiple_decimals++;
+        if(multiple_decimals === 1){                  //checks for multiple decimals
+            display_arr.push(value);
+            $('.display').val(display_arr.join(''));
+        }
+    }else if(value === '+' || value === '-' || value === '*' || value === '/'){      //checks for multiple operation keys & changing operation keys
+        multiple_operations++;
+        display_arr.push(value);
+        $('.display').val(display_arr.join(''));
+        if(multiple_operations > 1){
+            display_arr.splice(display_arr.length-2,1);
+            $('.display').val(display_arr.join(''));
+        }
+    }else{
+        if(value === '='){
+            multiple_decimals = 0;
+            multiple_operations = 0;
+            $('.display').val(display_arr.join(''));
+        }else{
+            multiple_decimals = 0;
+            multiple_operations = 0;
+            display_arr.push(value);
+            $('.display').val(display_arr.join(''));
+        }
+    }
+}
+//---------------------------------- CALCULATING WHEN EQUAL SIGN CLICKED & CREATING CALCULATION ARRAY USING DISPLAY ARRAY ----------------------------------
+var key_input_arr = [];
+function calculation() {
+    var num = '';
+    for(var i = 0; i <= display_arr.length ; i++){
+        if(isNaN(display_arr[i]) === false || display_arr[i] === '.'){     //adding decimals with numbers
+            num += display_arr[i].toString();
+        }else{
+            key_input_arr.push(Number(num));
+            key_input_arr.push(display_arr[i]);
+            num = '';
+        }
+    }
+    key_input_arr.splice(i-1,1);
+    $('.display').val(order_of_operation);
+    var last_value = key_input_arr[0];
+    display_arr = [];
+    display_arr.push(last_value);
+    key_input_arr = [];
+}
+//---------------------------------- BASIC OPERATIONS & SUCCESSIVE OPERATION & ORDER OF OPERATION ----------------------------------
+function order_of_operation(){
+    for(var i = 0; i<key_input_arr.length; i++){
+        if(key_input_arr[i] === '*' || key_input_arr[i] === '/'){
+            if(key_input_arr[i] === '*' ){
+                var new_result = key_input_arr[i-1] * key_input_arr[i+1];
+                key_input_arr.splice(i-1,3,new_result);
+                i=0;
+            }
+            if(key_input_arr[i] === '/' ){
+                var new_result = key_input_arr[i-1] / key_input_arr[i+1];
+                key_input_arr.splice(i-1,3,new_result);
+                i=0;
+            }
+        }
+    }
+    for(var j = 0; j<key_input_arr.length; j++){
+        if(key_input_arr[j] === '+' || key_input_arr[j] === '-'){
+            if(key_input_arr[j] === '+' ){
+                var new_result = key_input_arr[j-1] + key_input_arr[j+1];
+                key_input_arr.splice(j-1,3,new_result);
+                j=0;
+            }
+            if(key_input_arr[j] === '-' ){
+                var new_result = key_input_arr[j-1] - key_input_arr[j+1];
+                key_input_arr.splice(j-1,3,new_result);
+                j=0;
+            }
+        }
+    }
+    if(isFinite(key_input_arr[0])===false){          //division by zero = change infinity to error
+        return "ERROR"
+    }else{
+        return key_input_arr[0];
+    }
+}

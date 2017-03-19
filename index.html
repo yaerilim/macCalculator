@@ -9,77 +9,49 @@
     <title>Mac OS 9 Calculator</title>
 </head>
 <body>
+<!--------------------------------- KEY SOUND --------------------------------->
     <audio class="sound" src="img/sound.wav"></audio>
+<!--------------------------------- PAGE HEADER --------------------------------->
     <header>
         <img class="header_img" src="img/header.jpg">
         <img class="header_img2" src="img/header2.jpg">
     </header>
+<!--------------------------------- CALCULATOR - WHOLE BODY --------------------------------->
     <div class="calculator_container">
-        <div class="results"><p>0</p></div>
+<!--------------------------------- CALCULATOR - DISPLAY AREA --------------------------------->
+        <input type="text" class="display" value="0">
+<!--------------------------------- CALCULATOR - BUTTONS AREA --------------------------------->
         <div class="buttons">
             <div class="row1 row">
-                <div class="c key operation">
-                    C
-                </div>
-                <div class="divide key operation">
-                    /
-                </div>
-                <div class="multiply key operation">
-                    *
-                </div>
+                <div class="clear key operation"><p>C</p></div>
+                <div class="divide key operation"><p>/</p></div>
+                <div class="multiply key operation"><p>*</p></div>
             </div>
             <div class="row2 row">
-                <div class="7 key number">
-                    7
-                </div>
-                <div class="8 key number">
-                    8
-                </div>
-                <div class="9 key number">
-                    9
-                </div>
-                <div class="minus key operation">
-                    -
-                </div>
+                <div class="7 key number"><p>7</p></div>
+                <div class="8 key number"><p>8</p></div>
+                <div class="9 key number"><p>9</p></div>
+                <div class="minus key operation"><p>-</p></div>
             </div>
             <div class="row3 row">
-                <div class="4 key number">
-                    4
-                </div>
-                <div class="5 key number">
-                    5
-                </div>
-                <div class="6 key number">
-                    6
-                </div>
-                <div class="plus key operation">
-                    +
-                </div>
+                <div class="4 key number"><p>4</p></div>
+                <div class="5 key number"><p>5</p></div>
+                <div class="6 key number"><p>6</p></div>
+                <div class="plus key operation"><p>+</p></div>
             </div>
             <div class="row4 row">
-                <div class="1 key number">
-                    1
-                </div>
-                <div class="2 key number">
-                    2
-                </div>
-                <div class="3 key number">
-                    3
-                </div>
-                <div class="equal key operation">
-                    =
-                </div>
+                <div class="1 key number"><p>1</p></div>
+                <div class="2 key number"><p>2</p></div>
+                <div class="3 key number"><p>3</p></div>
+                <div class="equal key operation"><p>=</p></div>
             </div>
             <div class="row5 row">
-                <div class="zero key number">
-                    <p>0</p>
-                </div>
-                <div class="point key number">
-                    <p>.</p>
-                </div>
+                <div class="zero key number"><p>0</p></div>
+                <div class="decimal key number"><p>.</p></div>
             </div>
         </div>
     </div>
+<!--------------------------------- ICON IMAGES ON THE RIGHT OF THE PAGE --------------------------------->
     <div class="icons"><img src="img/icons.png"></div>
 </body>
 </html>
