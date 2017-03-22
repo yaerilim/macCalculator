@@ -84,6 +84,7 @@ header>img{
     text-align: right;
     font-family: apple;
     font-size: 3vh;
+    overflow: scroll;
 }
 /******************************* CALCULATOR - BUTTONS AREA *******************************/
 .buttons{

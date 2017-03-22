@@ -1,9 +1,17 @@
 //---------------------------------- CALCULATOR STARTS ----------------------------------
 $(document).ready(function() {
-   $('.key').click(audio_on);
-   $('.key').click(key_display);
-   $('.equal').click(calculation);
-   $('.clear').click(clear);
+    $('.key').click(audio_on);
+    $('.key').click(key_display);
+    $('.equal').click(calculation);
+    $('.clear').click(clear);
+    $('body').keypress(key_display);
+    $('body').keyup(function(event){               //esc key works on 'keyup' not 'keypress'
+        if(event.which === 27){
+            clear();
+        }
+    });
+    $('body').keypress(audio_on);
+    $('body').keyup(audio_on);
 });
 //---------------------------------- KEY SOUND ----------------------------------
 function audio_on(){
@@ -14,13 +22,65 @@ function clear() {
     $('.display').val('0');
     display_arr = [];
     key_input_arr = [];
+    $('.display').css('font-size', '3.5vh')
 }
 //---------------------------------- CREATING ARRAY FOR DISPLAY & AVOIDING MULTIPLE DECIMALS / OPERATION KEYS ----------------------------------
 var display_arr = [];
 var multiple_decimals = 0;
 var multiple_operations = 0;
-function key_display(){
+function key_display(){                 //taking keyboard input (keycode event)
     var value = $(this).text();
+    switch(event.which) {
+        case 48:
+            value = 0;
+            break;
+        case 49:
+            value = 1;
+            break;
+        case 50:
+            value = 2;
+            break;
+        case 51:
+            value = 3;
+            break;
+        case 52:
+            value = 4;
+            break;
+        case 53:
+            value = 5;
+            break;
+        case 54:
+            value = 6;
+            break;
+        case 55:
+            value = 7;
+            break;
+        case 56:
+            value = 8;
+            break;
+        case 57:
+            value = 9;
+            break;
+        case 46:
+            value = '.';
+            break;
+        case 43:
+            value = '+';
+            break;
+        case 45:
+            value = '-';
+            break;
+        case 42:
+            value = '*';
+            break;
+        case 47:
+            value = '/';
+            break;
+        case 13:
+            value = '=';
+            calculation();
+            break;
+    }
     if(value === '.'){
         multiple_decimals++;
         if(multiple_decimals === 1){                  //checks for multiple decimals
@@ -47,6 +107,7 @@ function key_display(){
             $('.display').val(display_arr.join(''));
         }
     }
+    change_font_size();
 }
 //---------------------------------- CALCULATING WHEN EQUAL SIGN CLICKED & CREATING CALCULATION ARRAY USING DISPLAY ARRAY ----------------------------------
 var key_input_arr = [];
@@ -65,7 +126,11 @@ function calculation() {
     $('.display').val(order_of_operation);
     var last_value = key_input_arr[0];
     display_arr = [];
-    display_arr.push(last_value);
+    if(isNaN(last_value)){
+        display_arr.push("ERROR");
+    }else{
+        display_arr.push(last_value);
+    }
     key_input_arr = [];
 }
 //---------------------------------- BASIC OPERATIONS & SUCCESSIVE OPERATION & ORDER OF OPERATION ----------------------------------
@@ -102,5 +167,15 @@ function order_of_operation(){
         return "ERROR"
     }else{
         return key_input_arr[0];
+    }
+}
+//---------------------------------- CHANGE THE FONT SIZE ON DISPLAY AREA ACCORDING TO THE LENGTH ----------------------------------
+function change_font_size(){
+    if(display_arr.length>8 || display_arr[0].length>8){
+        $('.display').css('font-size', '2vh')
+    }if(display_arr.length>14 || display_arr[0].length>14){
+        $('.display').css('font-size', '1.5vh')
+    }if(display_arr.length>18 || display_arr[0].length>18){
+        $('.display').css('font-size', '1vh')
     }
 }
