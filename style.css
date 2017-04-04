@@ -9,6 +9,7 @@ body{
     width: 100vw;
     background: url(img/background.jpeg) repeat;
     margin: 0;
+    overflow: hidden;
 }
 /******************************* PAGE HEADER *******************************/
 header{
@@ -45,34 +46,6 @@ header>img{
     background-size: 100%;
     display: inline-block;
     position: relative;
-}
-@media (max-width: 450px) and (orientation: portrait) {
-    .calculator_container{
-        height:90%;
-        width:90%;
-        top:5%;
-    }
-}
-@media (max-width: 750px) and (orientation: landscape) {
-    .calculator_container{
-        height:96%;
-        width:45%;
-        top:2%;
-    }
-}
-@media (min-width: 451px) and (max-width: 768px)  and (orientation: portrait) {
-    .calculator_container{
-        height:75%;
-        width:50%;
-        top:10%;
-    }
-}
-@media (min-width:751px) and (max-width: 1024px) and (orientation: landscape) {
-    .calculator_container{
-        height:75%;
-        width:40%;
-        top:10%;
-    }
 }
 /******************************* CALCULATOR - DISPLAY AREA *******************************/
 .display{
@@ -117,6 +90,11 @@ header>img{
     box-shadow: 0 0.2vh;
     transform: translateY(0.5vh);
 }
+.active{
+    background-color: lightgray;
+    box-shadow: 0 0.2vh;
+    transform: translateY(0.5vh);
+}
 .key>p{
     margin: 15% auto;
     text-align: center;
@@ -132,4 +110,53 @@ header>img{
 }
 .equal{
     height: 265%;
+}
+
+/******************************* MEDIA QUERY *******************************/
+@media (max-width: 450px) and (orientation: portrait) {
+    .calculator_container {
+        width: 80%;
+        height: 80%;
+        margin: 20% 10%;
+    }
+    .icons {
+        display: none;
+    }
+    .header_img{
+        width: 100%;
+    }
+    .header_img2{
+        display: none;
+    }
+}
+@media (max-width: 750px) and (orientation: landscape) {
+    .calculator_container {
+        width: 30%;
+        height: 100%;
+        margin: 2% 0 2% 35%;
+    }
+}
+@media (min-width: 451px) and (max-width: 768px)  and (orientation: portrait) {
+    .calculator_container {
+        width: 75%;
+        height: 100%;
+        margin: 4% 13%;
+    }
+    .icons {
+        display: none;
+    }
+    .header_img{
+        width: 100%;
+    }
+    .header_img2{
+        display: none;
+    }
+}
+
+@media (min-width:751px) and (max-width: 1024px) and (orientation: landscape) {
+    .calculator_container {
+        width: 40%;
+        height: 100%;
+        margin: 4% 0 2% 30%;
+    }
 }
